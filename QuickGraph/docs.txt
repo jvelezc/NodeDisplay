@@ -1,0 +1,163 @@
+﻿     //This is the same as above but using a library called quickgraph. However, I prefer the above one. 
+            //Everything below here is experimental and not to be trusted.
+            /*This part of the code generates the coordinates*/
+            //int Sentinel = AmountOfNodesToGenerate(3, 2);//this is the amount of coordinates generated 
+            //Random RandomGenerator = new Random();
+            //List<DataPoint> Coordinates = new List<DataPoint>();
+            //for (int i = 0; i < Sentinel; i++)
+            //{
+            //    Coordinates.Add(new DataPoint
+            //    {
+            //        UniqueIdentifier=i.ToString(),
+            //        XCoordinate = RandomGenerator.Next(),
+            //        YCoordinate = RandomGenerator.Next(),
+            //        TransmissionRange = 1,
+            //        EnergyConsumption = 2, //TODO: missing equation here.
+
+            //    });
+            //}
+
+           
+            //    /*The part of the code figures out if the datapoints are connected ends here*/
+
+            //    //After we figure out which nodes arec connected we will use quickgraph depth first search. 
+
+
+            //    AdjacencyGraph<string, Edge<string>> graph = new AdjacencyGraph<string, Edge<string>>(true);
+            //    graph.AddVertex("A");
+            //    graph.AddVertex("B");
+            //    graph.AddVertex("C");
+            //    graph.AddVertex("D");
+            //    graph.AddVertex("E");
+            //    graph.AddVertex("F");
+            //    graph.AddVertex("G");
+            //    graph.AddVertex("H");
+            //    graph.AddVertex("I");
+            //    graph.AddVertex("J");
+
+            //    Edge<string> a_e = new Edge<string>("A", "E");
+            //    Edge<string> e_f = new Edge<string>("E", "F");
+            //    Edge<string> f_g = new Edge<string>("F", "G");
+            //    Edge<string> g_h = new Edge<string>("G", "H");
+
+            //    Edge<string> a_b = new Edge<string>("A", "B");
+            //    Edge<string> b_c = new Edge<string>("B", "C");
+            //    Edge<string> c_d = new Edge<string>("C", "D");
+            //    Edge<string> d_e = new Edge<string>("D", "E");
+            //    Edge<string> e_h = new Edge<string>("E", "H");
+            //    Edge<string> h_i = new Edge<string>("H", "I");
+            //    Edge<string> i_j = new Edge<string>("I", "J");
+            //    Edge<string> j_a = new Edge<string>("J", "A");
+
+
+            //    graph.AddEdge(a_e);
+            //    graph.AddEdge(e_f);
+            //    graph.AddEdge(f_g);
+            //    graph.AddEdge(g_h);
+
+            //    graph.AddEdge(a_b);
+            //    graph.AddEdge(b_c);
+            //    graph.AddEdge(c_d);
+            //    graph.AddEdge(d_e);
+            //    graph.AddEdge(e_h);
+            //    graph.AddEdge(h_i);
+            //    graph.AddEdge(i_j);
+            //    graph.AddEdge(j_a);
+
+            //    foreach (var vertex in graph.Vertices)
+            //        foreach (var edge in graph.OutEdges(vertex))
+            //            Console.WriteLine(edge);
+
+
+            //    Dictionary<Edge<string>, double> edgeCost = new Dictionary<Edge<string>, double>(graph.EdgeCount);
+            //    edgeCost.Add(a_e, 1);
+            //    edgeCost.Add(e_f, 1);
+            //    edgeCost.Add(f_g, 1);
+            //    edgeCost.Add(g_h, 1);
+            //    edgeCost.Add(a_b, 1);
+
+            //    edgeCost.Add(b_c, 1);
+            //    edgeCost.Add(c_d, 2);
+            //    edgeCost.Add(d_e, 3);
+            //    edgeCost.Add(e_h, 4);
+            //    edgeCost.Add(h_i, 1);
+            //    edgeCost.Add(i_j, 2);
+            //    edgeCost.Add(j_a, 3);
+
+            //    foreach (var x in edgeCost)
+            //        Console.WriteLine("Edge {0} Cost {1}", x.Key, x.Value);
+
+
+            //    DijkstraShortestPathAlgorithm<string, Edge<string>> dijkstra = new DijkstraShortestPathAlgorithm<string, Edge<string>>(graph, AlgorithmExtensions.GetIndexer<Edge<string>, double>(edgeCost));
+            //    QuickGraph.Algorithms.Observers.VertexPredecessorRecorderObserver<string, Edge<string>> predecessorObserver = new QuickGraph.Algorithms.Observers.VertexPredecessorRecorderObserver<string, Edge<string>>();
+            //    predecessorObserver.Attach(dijkstra);
+
+            //    QuickGraph.Algorithms.Observers.VertexPredecessorPathRecorderObserver<string, Edge<string>> predecessorPathRecorderObserver = new QuickGraph.Algorithms.Observers.VertexPredecessorPathRecorderObserver<string, Edge<string>>();
+            //    predecessorPathRecorderObserver.Attach(dijkstra);
+            //    VertexDistanceRecorderObserver<string, Edge<string>> distObserver = new VertexDistanceRecorderObserver<string, Edge<string>>(AlgorithmExtensions.GetIndexer<Edge<string>, double>(edgeCost));
+            //    distObserver.Attach(dijkstra);
+
+
+
+            //    dijkstra.Compute("A");
+
+            //    // report out what the observers contain, just to see what they do
+
+            //    Console.WriteLine("\nPredecessor Observer\n");
+
+            //    foreach (var z in predecessorObserver.VertexPredecessors)
+            //    {
+
+            //        Console.WriteLine(" Vertex Predecessor key:{0} value:{1}", z.Key, z.Value);
+            //    }
+
+            //    Console.WriteLine("\nPath Recorder Observer\n");
+
+            //    foreach (var xx in predecessorPathRecorderObserver.VertexPredecessors)
+            //    {
+            //        Console.WriteLine(" EndPathVertices {0} ", xx.ToString());
+            //    }
+
+
+            //    Console.WriteLine("\nDistance Observer\n");
+
+            //    foreach (KeyValuePair<string, double> kvp in distObserver.Distances)
+            //        Console.WriteLine("Distance from root to node {0} is {1}", kvp.Key, kvp.Value);
+
+
+            //    // get path from root to node I, working backwards, using the predecessor observer
+
+            //    // note that total costs for path should agree with those above from distance observer
+
+            //    Console.WriteLine("\nShow Path and Cost\n");
+
+            //    IEnumerable<Edge<string>> outpath;
+
+            //    foreach (var endVertex in graph.Vertices)
+            //    {
+            //        Console.WriteLine("\nPath to End Vertex {0}\n", endVertex);
+
+            //        bool validPath = predecessorObserver.TryGetPath(endVertex, out outpath);
+
+            //        if (validPath)
+            //        {
+            //            int pathCount = 0;
+            //            double totalPathCost = 0.0;
+            //            double costForEdge;
+            //            Console.WriteLine(" ");
+            //            foreach (var zzz in outpath)
+            //            {
+            //                edgeCost.TryGetValue(zzz, out costForEdge);
+            //                totalPathCost += costForEdge;
+            //                Console.WriteLine("\tStep {0} {1} edge cost {2} total path cost {3}", pathCount++, zzz.ToString(), costForEdge, totalPathCost);
+
+
+            //            }
+            //        }
+            //    }
+
+            //    //returns a file called graphn in the bin file
+            //    var graphviz = new GraphvizAlgorithm<string, Edge<string>>(graph);
+            //    string output = graphviz.Generate(new FileDotEngine(), "graph2");
+
+
